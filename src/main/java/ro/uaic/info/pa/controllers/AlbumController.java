@@ -29,6 +29,8 @@ public class AlbumController implements AlbumDAO {
                 album.setArtistId(rs.getInt("artist_id"));
                 album.setReleaseYear(rs.getInt("release_year"));
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
@@ -45,6 +47,7 @@ public class AlbumController implements AlbumDAO {
             stmt.setInt(2, artistId);
             stmt.setInt(3, releaseYear);
             stmt.executeUpdate();
+            stmt.close();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }

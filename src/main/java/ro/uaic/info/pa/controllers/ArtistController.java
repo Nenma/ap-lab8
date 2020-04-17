@@ -25,6 +25,8 @@ public class ArtistController implements ArtistDAO {
                 artist.setName(rs.getString("name"));
                 artist.setCountry(rs.getString("country"));
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
@@ -40,6 +42,7 @@ public class ArtistController implements ArtistDAO {
             stmt.setString(1, name);
             stmt.setString(2, country);
             stmt.executeUpdate();
+            stmt.close();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
